@@ -1,0 +1,54 @@
+{
+  "schema": 2,
+  "id": "k10.0.6-fr1.9.0-j17.0.20.1-r1",
+  "kicad": {
+    "version": "10.0.6",
+    "accept_prefix": "10.0",
+    "windows-x64": {
+      "file": "kicad-10.0.6-x86_64.exe",
+      "url": "https://github.com/KiCad/kicad-source-mirror/releases/download/10.0.6/kicad-10.0.6-x86_64.exe",
+      "sha256": "9e24dc47119f7c472128c2f293c5e3f35569274a44c905e60a7514d47c16ce48"
+    },
+    "windows-arm64": {
+      "file": "kicad-10.0.6-arm64.exe",
+      "url": "https://github.com/KiCad/kicad-source-mirror/releases/download/10.0.6/kicad-10.0.6-arm64.exe",
+      "sha256": "a45e31447db8058bde37716fc4dfe663b3159c2b673f36a48f521958cb82ea3d"
+    },
+    "macos": {
+      "file": "kicad-unified-universal-10.0.6.dmg",
+      "url": "https://github.com/KiCad/kicad-source-mirror/releases/download/10.0.6/kicad-unified-universal-10.0.6.dmg",
+      "sha256": "ef4dcd4278c46d3efcd28c8db273d5957d68efda028f6bf79b4811fc5302dc68"
+    },
+    "linux": "Install from the official KiCad PPA: sudo add-apt-repository ppa:kicad/kicad-10.0-releases && sudo apt install kicad"
+  },
+  "freerouting": {
+    "version": "1.9.0",
+    "file": "freerouting-1.9.0.jar",
+    "url": "https://github.com/freerouting/freerouting/releases/download/v1.9.0/freerouting-1.9.0.jar",
+    "sha256": "9084a4888937a7f31f857ecc12aa7a37407f51160e4d2892dff9c9bb47ae3102"
+  },
+  "java": {
+    "version": "17.0.20.1+1",
+    "major": "17",
+    "windows-x64": {
+      "file": "OpenJDK17U-jre_x64_windows_hotspot_17.0.20.1_1.zip",
+      "url": "https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.20.1%2B1/OpenJDK17U-jre_x64_windows_hotspot_17.0.20.1_1.zip",
+      "sha256": "bc21a93923103cdaac93ee337b0ae4365e739fde36df823dd456bc67c8a9d352"
+    },
+    "linux-x64": {
+      "file": "OpenJDK17U-jre_x64_linux_hotspot_17.0.20.1_1.tar.gz",
+      "url": "https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.20.1%2B1/OpenJDK17U-jre_x64_linux_hotspot_17.0.20.1_1.tar.gz",
+      "sha256": "0b2b640e3046b64c8ec504de0ab9d91bb5610182bda21fad454681ce54d45a62"
+    },
+    "macos-x64": {
+      "file": "OpenJDK17U-jre_x64_mac_hotspot_17.0.20.1_1.tar.gz",
+      "url": "https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.20.1%2B1/OpenJDK17U-jre_x64_mac_hotspot_17.0.20.1_1.tar.gz",
+      "sha256": "333cb81123c36568586646c73c8fa2326dab8badc43f5ea388a90fff59c9df27"
+    },
+    "macos-arm64": {
+      "file": "OpenJDK17U-jre_aarch64_mac_hotspot_17.0.20.1_1.tar.gz",
+      "url": "https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.20.1%2B1/OpenJDK17U-jre_aarch64_mac_hotspot_17.0.20.1_1.tar.gz",
+      "sha256": "190480874ccceb358cbc840393207f77ac3e63a4c5f8129d0e23e9518b96ad05"
+    }
+  }
+}

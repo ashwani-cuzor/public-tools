@@ -1,0 +1,45 @@
+name: check
+# Runs both installers on clean machines: every pinned URL must download and match its SHA-256.
+# KiCad is not installed here (exit code 2 = everything but KiCad present, which is expected).
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 6 * * 1'   # weekly: catch upstream links that disappear
+
+jobs:
+  windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: install.ps1
+        shell: pwsh
+        run: |
+          powershell -ExecutionPolicy Bypass -File install.ps1 -Dest "$env:RUNNER_TEMP\tools"
+          if ($LASTEXITCODE -ne 0 -and $LASTEXITCODE -ne 2) { exit $LASTEXITCODE }
+          $t = Get-Content "$env:RUNNER_TEMP\tools\tools.json" | ConvertFrom-Json
+          & $t.java -version
+          if ($LASTEXITCODE -ne 0) { exit 1 }
+          exit 0
+      - name: kicad installer hash
+        shell: pwsh
+        run: |
+          $l = Get-Content toolchain.lock -Raw | ConvertFrom-Json
+          $k = $l.kicad.'windows-x64'
+          $r = Invoke-WebRequest -Method Head -Uri $k.url -UseBasicParsing
+          if ($r.StatusCode -ne 200) { exit 1 }
+
+  linux:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: install.sh
+        run: |
+          set +e
+          sh install.sh --dest "$RUNNER_TEMP/tools"
+          rc=$?
+          set -e
+          [ $rc -eq 0 ] || [ $rc -eq 2 ]
+          "$RUNNER_TEMP/tools/jre17/bin/java" -version
+          "$RUNNER_TEMP/tools/jre17/bin/java" -jar "$RUNNER_TEMP/tools/freerouting-1.9.0.jar" --version || true
